@@ -42,7 +42,7 @@ public class GuessNumberBot extends TelegramLongPollingBot {
     }
 
     private void startGame(long chatId) {
-        int secretNumber = new Random().nextInt(100) + 1; // Генерація випадкового числа від 1 до 100
+        int secretNumber = new Random().nextInt(100) + 1;
         DataStorage.updateGameData(chatId, secretNumber); // Записуємо дані
         sendMessage(chatId, "Гра почалась! Вгадай число від 1 до 100.");
     }
@@ -56,7 +56,7 @@ public class GuessNumberBot extends TelegramLongPollingBot {
                 sendMessage(chatId, "Секретне число менше!");
             } else {
                 sendMessage(chatId, "Вітаємо! Ви вгадали число!");
-                DataStorage.updateGameData(chatId, -1); // Скидаємо гру
+                DataStorage.updateGameData(chatId, -1);
             }
         } catch (NumberFormatException e) {
             sendMessage(chatId, "Будь ласка, введіть число.");
